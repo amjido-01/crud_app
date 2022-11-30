@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const session = require('express-session') // look up on this youtube video letter
 require('dotenv').config();
 const router = express.Router();
+const path = require('path')
 
 
 
@@ -32,7 +33,9 @@ app.use((req, res, next) => {
 });
 
 // template engine
+app.set('views', './views')
 app.set('view engine', 'ejs')
+app.use(express.static(path.join(__dirname, 'views')))
 
 // app.use('', require('./route/routes'))
 app.use('/', require('./route/index'));
