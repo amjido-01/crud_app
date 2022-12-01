@@ -4,6 +4,7 @@ const session = require('express-session') // look up on this youtube video lett
 require('dotenv').config();
 const router = express.Router();
 const path = require('path')
+const morgan = require('morgan')
 
 
 
@@ -31,6 +32,8 @@ app.use((req, res, next) => {
     delete req.session.message,
     next()
 });
+
+app.use(morgan('tiny'))
 
 // template engine
 app.set('views', './views')
