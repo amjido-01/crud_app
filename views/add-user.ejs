@@ -2,8 +2,8 @@
 
 <div class="container border-4 mx-auto mt-[5%]">
     <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md mx-auto">
-        <form action="/add-user" method="post" enctype="multipart/form-data">
-          <div class="grid grid-cols-2 gap-4">
+        <form action="/add-user" method="post" id="add-form" enctype="multipart/form-data">
+          
             <div class="form-group mb-6">
               <input type="text" class="form-control
                 block
@@ -19,28 +19,10 @@
                 transition
                 ease-in-out
                 m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput123"
-                aria-describedby="emailHelp123" placeholder="First name">
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none required" id="exampleInput123"
+                aria-describedby="emailHelp123" name="fname" placeholder="Name">
             </div>
-            <div class="form-group mb-6">
-              <input type="text" class="form-control
-                block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput124"
-                aria-describedby="emailHelp124" placeholder="Last name">
-            </div>
-          </div>
+           
 
           <div class="form-group mb-6">
             <input type="email" class="form-control block
@@ -56,8 +38,8 @@
               transition
               ease-in-out
               m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput125"
-              placeholder="Email address">
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none required" name="email" id="exampleInput125"
+              placeholder="Email">
             </div>
           <div class="form-group mb-6">
             <input type="tel" class="form-control block
@@ -73,7 +55,7 @@
               transition
               ease-in-out
               m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput125"
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none required" name="phone" id="exampleInput125"
               placeholder="Phone">
             </div>
           <div class="form-group mb-6">
@@ -90,8 +72,8 @@
               transition
               ease-in-out
               m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput125"
-              placeholder="Phone">
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none required" id="exampleInput125"
+              placeholder="select img">
             </div>
 
           
@@ -101,7 +83,7 @@
               id="exampleCheck25" checked>
             <label class="form-check-label inline-block text-gray-800" for="exampleCheck25">Subscribe to our newsletter</label>
           </div>
-          <button type="submit" class="
+          <button type="submit" name="submit" class="
             w-full
             px-6
             py-2.5
@@ -118,7 +100,7 @@
             active:bg-blue-800 active:shadow-lg
             transition
             duration-150
-            ease-in-out">Sign up</button>
+            ease-in-out">Add user</button>
         </form>
       </div>
 </div>
