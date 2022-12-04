@@ -43,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'views')))
 // app.use('', require('./route/routes'))
 app.use('/', require('./route/index'));
 app.use('', require('./route/users'))
+app.use('', require('./route/routes'))
 
   
 app.listen(PORT, () => {
