@@ -5,6 +5,7 @@ require('dotenv').config();
 const router = express.Router();
 const path = require('path')
 const morgan = require('morgan')
+const User = require('./models/users')
 
 
 
