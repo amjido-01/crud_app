@@ -23,7 +23,7 @@ router.post('/add-user', upload, (req, res) => {
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
-        image: req.body.image
+        image: req.file.path
     });
     user.save((err) => {
         if (err) {
@@ -33,6 +33,7 @@ router.post('/add-user', upload, (req, res) => {
                 type: 'success',
                 message: 'user added successfully'
             };
+            console.log('user added')
             res.redirect('/')
         }
     })
