@@ -16,7 +16,7 @@ app.use(express.static('public'));
 // connect to the database
 mongoose.connect(process.env.DB_URI, {useNewUrlparser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
-db.on('error', (error) => console.log(error));
+db.on('error', (error) => console.log("database not connected"));
 db.once('open', () => console.log('database is connected'))
 
 app.use(
