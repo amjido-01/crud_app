@@ -16,9 +16,27 @@ const storage = multer.diskStorage({
   
 const upload = multer({ 
     storage: storage
-}).single('img');
+}).single('image');
 
-
+router.post('/add-user', upload, (req, res) => {
+    const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        image: req.body.image
+    });
+    user.save((err) => {
+        if (err) {
+            res.json({message: err.message, type: 'danger'})
+        } else {
+            req.session.message = {
+                type: 'success',
+                message: 'user added successfully'
+            };
+            res.redirect('/')
+        }
+    })
+})
 router.get('/contact', (req, res) => {
     res.render('contact', {title: 'contact'})
 });
