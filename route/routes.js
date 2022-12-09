@@ -9,13 +9,25 @@ const storage = multer.diskStorage({
       cb(null, './uploads')
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.fieldname + '-' + uniqueSuffix)
+        const extensionName = file.mimetype.split('/')[1]
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, file.fieldname + '-' + uniqueSuffix + '.' + extensionName)
     }
 })
   
 const upload = multer({ 
-    storage: storage
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+
+        // The function should call `cb` with a boolean
+        if (file.mimetype == 'image/png' || file.mimetype == 'image/jpg' || file.mimetype == 'image/jpeg') {
+            cb(null, true)
+        } else {
+            cb(null, false);
+            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+        }
+  
+    }
 }).single('image');
 
 router.post('/add-user', upload, (req, res) => {
