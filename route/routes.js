@@ -27,10 +27,12 @@ router.post('/add-user', upload, (req, res) => {
     });
     user.save((err) => {
         if (err) {
-            res.json({message: err.message, type: 'danger'})
+            res.json({message: err.message, type: 'bg-red-100'})
         } else {
             req.session.message = {
-                type: 'success',
+                type: 'bg-green-100',
+                border: 'border-blue-500',
+                text: 'text-blue-700',
                 message: 'user added successfully'
             };
             console.log('user added')
