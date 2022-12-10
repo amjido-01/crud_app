@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.static('public'));
 
+
 // connect to the database
 mongoose.connect(process.env.DB_URI, {useNewUrlparser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
 });
 
 app.use(morgan('tiny'))
+app.use(express.static('uploads'))
 
 // template engine
 app.set('views', './views')
