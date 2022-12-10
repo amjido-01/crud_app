@@ -24,7 +24,8 @@ const upload = multer({
             cb(null, true)
         } else {
             cb(null, false);
-            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+            // console.log('invalid file extension')
+            // return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
         }
   
     }
@@ -40,7 +41,16 @@ router.post('/add-user', upload, (req, res) => {
     user.save((err) => {
         if (err) {
             res.json({message: err.message, type: 'bg-red-100'})
-        } else {
+        } else if (!req.file) {
+            console.log('invalid file extension');
+            return res.status(400).send({
+                type: 'bg-red-100',
+                border: 'border-red-500',
+                text: 'text-red-700',
+                message: 'invalide file extension'
+            });
+        }
+        else {
             req.session.message = {
                 type: 'bg-green-100',
                 border: 'border-blue-500',
