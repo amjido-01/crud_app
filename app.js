@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const session = require('express-session') // look up on this youtube video letter
 require('dotenv').config();
 const router = express.Router();
-const path = require('path')
+const path = require('path');
+const fs = require('fs')
 const morgan = require('morgan')
 const User = require('./models/users')
 
@@ -36,6 +37,9 @@ app.use((req, res, next) => {
 
 app.use(morgan('tiny'))
 app.use(express.static('uploads'))
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 // template engine
 app.set('views', './views')
