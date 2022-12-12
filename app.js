@@ -38,8 +38,7 @@ app.use((req, res, next) => {
 app.use(morgan('tiny'))
 app.use(express.static('uploads'))
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+
 
 // template engine
 app.set('views', './views')
