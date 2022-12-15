@@ -73,5 +73,9 @@ router.get('/about', (req, res) => {
 router.get('/add-user', (req, res) => {
     res.render('add-user', {title: 'add-user'})
 });
+router.get('/edit-user/:id', (req, res) => {
+    id
+    // res.render('edit-user', {title: 'edit-user'})
+});
 
 module.exports = router;
