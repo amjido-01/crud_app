@@ -16,7 +16,7 @@
       </div>
     <% } %>
 
-    <form action="/update/<%= user.id %>" method="post" id="add-form" enctype="multipart/form-data">
+    <form action="/update/<%= user._id %>" method="post" id="add-form" enctype="multipart/form-data">
         <h1 class="text-center  w-full
             px-6
             bg-green-600
@@ -109,7 +109,6 @@
             ">
             <img src="/<%= user.image %>" class="mt-1 w-full">
         </div>
-
         <input type="hidden" name="old_image" value="<%= user.image %>">
 
         <div class="form-group form-check text-center mb-6">
