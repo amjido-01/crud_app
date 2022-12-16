@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const nodemailer = require("nodemailer");
+const bodyParser = require('bodyParser')
 // const upload = multer({ dest: "uploads/" });
 
 
