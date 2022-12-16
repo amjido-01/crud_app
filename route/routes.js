@@ -5,14 +5,10 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const nodemailer = require("nodemailer");
-const bodyParser = require('bodyParser')
+// const bodyParser = require('bodyParser')
 // const upload = multer({ dest: "uploads/" });
 
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-app.use(bodyParser.json())
 
 
 
@@ -79,7 +75,19 @@ router.get('/contact', (req, res) => {
     res.render('contact', {title: 'contact'})
 });
 
+router.post('/contact', (req, res) => {
 
+    // node mailer server instance
+    let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: testAccount.user, // generated ethereal user
+          pass: testAccount.pass, // generated ethereal password
+        },
+      });
+})
 
 // about page
 router.get('/about', (req, res) => {
