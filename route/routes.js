@@ -3,7 +3,8 @@ const router = express.Router();
 const User = require('../models/users');
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs')
+const fs = require('fs');
+// const upload = multer({ dest: "uploads/" });
 
 
 const storage = multer.diskStorage({
@@ -17,7 +18,7 @@ const storage = multer.diskStorage({
     }
 })
   
-const upload = multer({ 
+const uploads = multer({ 
     storage: storage,
     fileFilter: (req, file, cb) => {
 
@@ -33,7 +34,7 @@ const upload = multer({
     }
 }).single('image');
 
-router.post('/add-user', upload, (req, res) => {
+router.post('/add-user', uploads, (req, res) => {
     const user = new User({
         name: req.body.name,
         email: req.body.email,
@@ -99,7 +100,7 @@ router.get('/edit-user/:id', (req, res) => {
 });
 
 // update a user
-router.post('/update/:id', upload, (req, res) => {
+router.post('/update/:id', uploads, (req, res) => {
     let id = req.params.id;
     let new_image = '';
 
