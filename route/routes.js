@@ -4,7 +4,15 @@ const User = require('../models/users');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const nodemailer = require("nodemailer");
 // const upload = multer({ dest: "uploads/" });
+
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+
 
 
 const storage = multer.diskStorage({
@@ -69,6 +77,9 @@ router.post('/add-user', uploads, (req, res) => {
 router.get('/contact', (req, res) => {
     res.render('contact', {title: 'contact'})
 });
+
+
+
 // about page
 router.get('/about', (req, res) => {
     res.render('about', {title: 'about'})
