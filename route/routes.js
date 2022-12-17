@@ -80,17 +80,10 @@ router.get('/contact', (req, res) => {
 
 router.post('/contact', (req, res) => {
 
-    // node mailer server instance
-    let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-          user: testAccount.user, // generated ethereal user
-          pass: testAccount.pass, // generated ethereal password
-        },
-      });
+    console.log(req.body)
+
 })
+
 
 // about page
 router.get('/about', (req, res) => {
