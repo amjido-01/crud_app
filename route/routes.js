@@ -80,6 +80,8 @@ router.get('/contact', (req, res) => {
 
 router.post('/contact', (req, res) => {
 
+    console.log(req.body)
+
     // node mailer server instance
     let transporter = nodemailer.createTransport({
         host: "smtp.ethereal.email",
