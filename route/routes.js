@@ -5,11 +5,14 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const nodemailer = require("nodemailer");
+var bodyParser = require('body-parser');
 // const bodyParser = require('bodyParser')
 // const upload = multer({ dest: "uploads/" });
 
+const app = express();
 
-
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true}))
 
 
 const storage = multer.diskStorage({

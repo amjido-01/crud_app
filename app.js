@@ -5,6 +5,7 @@ require('dotenv').config();
 const router = express.Router();
 const path = require('path');
 const fs = require('fs')
+var bodyParser = require('body-parser');
 const morgan = require('morgan')
 const User = require('./models/users')
 
@@ -13,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.static('public'));
-
+app.use(bodyParser.urlencoded({extended: true}))
 
 // connect to the database
 mongoose.connect(process.env.DB_URI, {useNewUrlparser: true, useUnifiedTopology: true});
