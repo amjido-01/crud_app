@@ -78,6 +78,10 @@ router.get('/contact', (req, res) => {
     res.render('contact', {title: 'contact'})
 });
 
+
+const GMAIL_USER = process.env.GMAIL_USER
+const GMAIL_PASS = process.env.GMAIL_PASS
+
 router.post('/contact', (req, res) => {
 
     console.log(req.body)
@@ -88,9 +92,12 @@ router.post('/contact', (req, res) => {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-          user: testAccount.user, // generated ethereal user
-          pass: testAccount.pass, // generated ethereal password
+          user: GMAIL_USER, // generated ethereal user
+          pass: GMAIL_PASS, // generated ethereal password
         },
+        tls: {
+            rejectUnauthorized: false
+        }
     });
 
     // Specify what the email will look like
@@ -100,6 +107,17 @@ router.post('/contact', (req, res) => {
         subject: 'New message from contact form at tylerkrys.ca',
         text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
     }
+
+
+    // Attempt to send the email
+    transporter.sendMail(mailOpts, (error, response) => {
+    if (error) {
+      res.render('/contact-failure') // Show a page indicating failure
+    }
+    else {
+      res.redirect('/hello') // Show a page indicating success
+    }
+  })
 
 })
 
