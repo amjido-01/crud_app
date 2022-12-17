@@ -80,7 +80,24 @@ router.get('/contact', (req, res) => {
 
 router.post('/contact', (req, res) => {
 
-    console.log(req.body)
+    // node mailer server instance
+    let transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: testAccount.user, // generated ethereal user
+          pass: testAccount.pass, // generated ethereal password
+        },
+    });
+
+    // Specify what the email will look like
+    const mailOpts = {
+        from: 'Your sender info here', // This is ignored by Gmail
+        to: GMAIL_USER,
+        subject: 'New message from contact form at tylerkrys.ca',
+        text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+    }
 
 })
 
