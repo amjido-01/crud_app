@@ -112,10 +112,10 @@ router.post('/contact', (req, res) => {
     // Attempt to send the email
     transporter.sendMail(mailOpts, (error, response) => {
     if (error) {
-      res.render('/contact-failure') // Show a page indicating failure
+      res.send('contact-failure') // Show a page indicating failure
     }
     else {
-      res.redirect('/hello') // Show a page indicating success
+      res.send('hello') // Show a page indicating success
     }
   })
 
