@@ -42,7 +42,16 @@ const uploads = multer({
     }
 }).single('image');
 
+const exampleCheck25 = document.getElementById('exampleCheck25')
 router.post('/add-user', uploads, (req, res) => {
+    console.log(req.body)
+    const exampleCheck25 = req.body.exampleCheck25
+    let checkState = exampleCheck25.checked = true
+    if (checkState) {
+        console.log('checked')
+    } else {
+        console.log('not checked')
+    }
     const user = new User({
         name: req.body.name,
         email: req.body.email,
