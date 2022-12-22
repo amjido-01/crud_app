@@ -47,12 +47,12 @@ const uploads = multer({
 router.post('/add-user', uploads, (req, res) => {
     console.log(req.body)
     const exampleCheck25 = req.body.myCheckbox
-    console.log("hy" + exampleCheck25)
-    // if (exampleCheck25.checked) {
-    //     console.log('checked')
-    // } else {
-    //     console.log('not checked')
-    // }
+    console.log("hy  " + exampleCheck25)
+    if (exampleCheck25.checked === true) {
+        console.log('checked')
+    } else {
+        console.log('not checked')
+    }
     // let checkState = exampleCheck25.checked = true
     // if (checkState) {
     //     console.log('checked')
@@ -78,12 +78,14 @@ router.post('/add-user', uploads, (req, res) => {
             });
         }
         else {
+            
             req.session.message = {
                 type: 'bg-green-100',
                 border: 'border-blue-500',
                 text: 'text-blue-700',
                 message: 'user added successfully'
             };
+           
             console.log('user added')
             res.redirect('/')
         }
