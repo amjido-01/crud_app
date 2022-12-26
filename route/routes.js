@@ -106,34 +106,32 @@ router.post('/contact', (req, res) => {
 
     // node mailer server instance
     let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
+        service: 'gmail',
         auth: {
-          user: GMAIL_USER, // generated ethereal user
-          pass: GMAIL_PASS, // generated ethereal password
-        },
-        tls: {
-            rejectUnauthorized: false
+            user: GMAIL_USER,
+            pass: GMAIL_PASS
         }
     });
 
     // Specify what the email will look like
     const mailOpts = {
-        from: 'Your sender info here', // This is ignored by Gmail
-        to: GMAIL_USER,
-        subject: 'New message from contact form at tylerkrys.ca',
-        text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+        from: req.body.email,  // This is ignored by Gmail
+        to:  GMAIL_USER,
+        subject: `message from ${req.body.email}: ${req.body.subject}`,
+        text: req.body.message
     }
 
 
     // Attempt to send the email
     transporter.sendMail(mailOpts, (error, response) => {
     if (error) {
-      res.send('contact-failure') // Show a page indicating failure
+    //   res.send('contact-failure') // Show a page indicating failure
+        console.log(error);
+        res.send('erro')
     }
     else {
-      res.send('hello') // Show a page indicating success
+        console.log('hello done')
+      res.render('hello') // Show a page indicating success
     }
   })
 
