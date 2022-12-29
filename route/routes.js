@@ -42,16 +42,14 @@ const uploads = multer({
     }
 }).single('image');
 
-// const exampleCheck25 = document.getElementById('exampleCheck25')
-// var checkboxValue = checkbox.value; 
 router.post('/add-user', uploads, (req, res) => {
     console.log(req.body)
     const exampleCheck25 = req.body.myCheckbox
     console.log("hy  " + exampleCheck25)
-    if (exampleCheck25.checked === true) {
-        console.log('checked')
-    } else {
+    if (!exampleCheck25 === true) {
         console.log('not checked')
+    } else {
+        console.log('checked')
     }
     // let checkState = exampleCheck25.checked = true
     // if (checkState) {
