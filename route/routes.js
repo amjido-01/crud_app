@@ -45,18 +45,12 @@ const uploads = multer({
 router.post('/add-user', uploads, (req, res) => {
     console.log(req.body)
     const exampleCheck25 = req.body.myCheckbox
-    console.log("hy  " + exampleCheck25)
     if (!exampleCheck25 === true) {
-        console.log('not checked')
+        console.log('checkbox ' + ' not checked')
     } else {
-        console.log('checked')
+        console.log('checkbox is' + 'checked, welcome')
     }
-    // let checkState = exampleCheck25.checked = true
-    // if (checkState) {
-    //     console.log('checked')
-    // } else {
-    //     console.log('not checked')
-    // }
+
     const user = new User({
         name: req.body.name,
         email: req.body.email,
@@ -94,9 +88,6 @@ router.get('/contact', (req, res) => {
     res.render('contact', {title: 'contact'})
 });
 
-
-const GMAIL_USER = process.env.GMAIL_USER
-const GMAIL_PASS = process.env.GMAIL_PASS
 
 router.post('/contact', (req, res) => {
 
