@@ -89,6 +89,9 @@ router.get('/contact', (req, res) => {
 });
 
 
+const GMAIL_USER = process.env.GMAIL_USER
+const GMAIL_PASS = process.env.GMAIL_PASS
+
 router.post('/contact', (req, res) => {
 
     console.log(req.body)
