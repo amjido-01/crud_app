@@ -36,6 +36,12 @@ app.use((req, res, next) => {
     next()
 });
 
+app.use((req, res, next) => {
+    res.locals.checkMessage = req.session.checkMessage,
+    delete req.session.checkMessage,
+    next()
+});
+
 app.use(morgan('tiny'))
 app.use(express.static('uploads'))
 

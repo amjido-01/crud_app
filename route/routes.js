@@ -52,7 +52,9 @@ router.post('/add-user', uploads, (req, res) => {
     if (!exampleCheck25 === true) {
         console.log('checkbox ' + ' not checked')
     } else {
-        console.log('checkbox is' + 'checked, welcome')
+        req.session.checkMessage = {
+            titleMsg: 'thanks for subscribing to our newsletter'
+        };
 
     }
 
