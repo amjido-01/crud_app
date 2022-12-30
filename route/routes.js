@@ -6,6 +6,10 @@ const path = require('path');
 const fs = require('fs');
 const nodemailer = require("nodemailer");
 var bodyParser = require('body-parser');
+
+const GMAIL_USER = process.env.GMAIL_USER
+const GMAIL_PASS = process.env.GMAIL_PASS
+
 // const bodyParser = require('bodyParser')
 // const upload = multer({ dest: "uploads/" });
 
@@ -89,12 +93,8 @@ router.get('/contact', (req, res) => {
 });
 
 
-const GMAIL_USER = process.env.GMAIL_USER
-const GMAIL_PASS = process.env.GMAIL_PASS
-
 router.post('/contact', (req, res) => {
-
-    console.log(req.body)
+    // console.log(req.body)
 
     // node mailer server instance
     let transporter = nodemailer.createTransport({
@@ -119,7 +119,7 @@ router.post('/contact', (req, res) => {
     if (error) {
     //   res.send('contact-failure') // Show a page indicating failure
         console.log(error);
-        res.render('error', {title: 'erro'})
+        res.render('error-page', {title: 'error'})
         // res.send('erro')
     }
     else {
@@ -131,7 +131,6 @@ router.post('/contact', (req, res) => {
   })
 
 })
-
 
 // about page
 router.get('/about', (req, res) => {
