@@ -53,6 +53,7 @@ router.post('/add-user', uploads, (req, res) => {
         console.log('checkbox ' + ' not checked')
     } else {
         console.log('checkbox is' + 'checked, welcome')
+
     }
 
     const user = new User({
@@ -74,14 +75,12 @@ router.post('/add-user', uploads, (req, res) => {
             });
         }
         else {
-            
             req.session.message = {
                 type: 'bg-green-100',
                 border: 'border-blue-500',
                 text: 'text-blue-700',
                 message: 'user added successfully'
             };
-           
             console.log('user added')
             res.redirect('/')
         }
@@ -122,7 +121,7 @@ router.post('/contact', (req, res) => {
         res.render('error-page', {title: 'error'})
         // res.send('erro')
     } else {
-        res.render('index', {title: 'hello'})
+        res.render('hello', {title: 'hello'})
       //res.render('hello') // Show a page indicating success
     }
   })
