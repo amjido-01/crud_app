@@ -121,12 +121,9 @@ router.post('/contact', (req, res) => {
         console.log(error);
         res.render('error-page', {title: 'error'})
         // res.send('erro')
-    }
-    else {
-        console.log('hello done')
-        res.render('hello', {title: 'hello'})
+    } else {
+        res.render('index', {title: 'hello'})
       //res.render('hello') // Show a page indicating success
-
     }
   })
 
